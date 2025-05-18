@@ -13,7 +13,7 @@ provider "azurerm" {
 }
 
 # Priority 1 = Hardcoded values in main.tf file.
-# Priority 2 = -var and -var-file are used to pass values in variables at 'manual.tfvars'. # terraform apply -var-file = "manual.tfvars"  
+# Priority 2 = -var and -var-file are used to pass values in variables at 'manual.tfvars'. # terraform apply -var-file="manual.tfvars"  
 # Priority 3 = *.auto.tfvars files are automatically loaded by Terraform.
 # Priority 4 = terraform.tfvars files are automatically loaded by Terraform.
 # Priority 5 =environment variables 
