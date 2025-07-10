@@ -6,12 +6,12 @@ terraform {
     }
   
   }
-  #   backend "azurerm" {
-  #   resource_group_name  = "b17myterraform"
-  #   storage_account_name = "b17robstorageaccount"
-  #   container_name       = "mycontainer"
-  #   key                  = "terraform.tfstate"
-  # }
+    backend "azurerm" {
+     resource_group_name  = "b17myterraform"
+     storage_account_name = "b17robstorageaccount"
+     container_name       = "mycontainer"
+     key                  = "terraform.tfstate"
+   }
 }
 
 provider "azurerm" {
