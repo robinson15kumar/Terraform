@@ -2,7 +2,7 @@ trigger: none
 
 pool: RohtasPool
 
-Steps: 
+steps: 
 - task: TerraformInstaller@1
   inputs:
     terraformVersion: 'latest'
