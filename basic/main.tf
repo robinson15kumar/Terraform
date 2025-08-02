@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "rg1" {
 }
 
 resource "azurerm_storage_account" "example" {
-  name                     = "b17robstorageaccount"
+  name                     = "b17robstorageaccount1"
   resource_group_name      =  "b17myterraform"
   location                 =  azurerm_resource_group.rg1.location
   account_tier             = "Standard"
