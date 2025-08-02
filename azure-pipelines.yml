@@ -1,0 +1,34 @@
+trigger: none
+
+pool: RohtasPool
+
+Steps: 
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/basic'
+    backendServiceArm: 'azure-portal-connection'
+    backendAzureRmResourceGroupName: 'robinson'
+    backendAzureRmStorageAccountName: 'robinb17storage'
+    backendAzureRmContainerName: 'mycontainer'
+    backendAzureRmKey: 'terraform.tfstate'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/basic'
+    environmentServiceNameAzureRM: 'azure-portal-connection'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/basic'
+    commandOptions: '-auto-approve'
+    environmentServiceNameAzureRM: 'azure-portal-connection'
