@@ -11,7 +11,9 @@ steps:
     provider: 'azurerm'
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/basic'
-    backendServiceArm: 'azure-portal-connection'
+    backendAzureRmStorageAccountName: 'robinb17storage'
+    backendAzureRmContainerName: 'mycontainer'
+    backendAzureRmKey: 'terraform.tfstate'
 
 - task: TerraformTask@5
   inputs:
