@@ -1,18 +1,17 @@
-
-pool: RohtasPool
-
 trigger: none
 
+pool: 
+  name: 'RohtasPool'
+
 variables:
+  terraformVersion: 1.2.9
   myDirectory: '$(System.DefaultWorkingDirectory)/basic'
-  environmentServiceNameAzureRM: 'azure-portal-connection' 
-
-
+  environmentServiceNameAzureRM: 'azure-portal-connection'
 
 steps:
 - task: TerraformInstaller@1
   inputs:
-    terraformVersion: 'latest'
+    terraformVersion: $(terraformVersion)
 
 - task: TerraformTask@5
   inputs:
@@ -30,6 +29,15 @@ steps:
     command: 'plan'
     workingDirectory: $(myDirectory)
     environmentServiceNameAzureRM: $(environmentServiceNameAzureRM)
+
+# Manual validation step, placed in an agentless job
+# - job: ManualApprovalJob
+#   pool: server  # This makes it an agentless job
+#   steps:
+#     - task: ManualValidation@1
+#       inputs:
+#         notifyUsers: 'robinson15kumar@gmail.com'
+#         approvers: 'gupta15robinson@gmail.com'
 
 - task: TerraformTask@5
   inputs:
