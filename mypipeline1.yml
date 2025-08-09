@@ -5,6 +5,8 @@ trigger: none
 
 variables:
   myDirectory: '$(System.DefaultWorkingDirectory)/basic'
+
+
 steps:
 - task: TerraformInstaller@1
   inputs:
@@ -14,7 +16,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$myDirectory'
+    workingDirectory: $(myDirectory)
     backendServiceArm: 'azure-portal-connection'
     backendAzureRmStorageAccountName: 'robinb17storage'
     backendAzureRmContainerName: 'mycontainer'
@@ -24,13 +26,13 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: '$myDirectory'
+    workingDirectory: $(myDirectory)
     environmentServiceNameAzureRM: 'azure-portal-connection'
 
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    workingDirectory: '$myDirectory'
+    workingDirectory: $(myDirectory)
     commandOptions: '-auto-approve'
     environmentServiceNameAzureRM: 'azure-portal-connection'
