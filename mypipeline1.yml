@@ -22,7 +22,7 @@ stages:
         provider: 'azurerm'
         command: 'init'
         workingDirectory: $(myDirectory)
-        backendServiceArm: 'azure-portal-connection'
+        backendServiceArm: $(environmentServiceNameAzureRM)
         backendAzureRmStorageAccountName: 'robinb17storage'
         backendAzureRmContainerName: 'mycontainer'
         backendAzureRmKey: 'myterraform.tfstate'
@@ -66,7 +66,7 @@ stages:
         provider: 'azurerm'
         command: 'init'
         workingDirectory: $(myDirectory)
-        backendServiceArm: 'azure-portal-connection'
+        backendServiceArm: $(environmentServiceNameAzureRM)
         backendAzureRmStorageAccountName: 'robinb17storage'
         backendAzureRmContainerName: 'mycontainer'
         backendAzureRmKey: 'myterraform.tfstate'
