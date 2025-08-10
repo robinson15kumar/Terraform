@@ -11,13 +11,13 @@ variables:
 steps:
 - task: TerraformInstaller@1
   inputs:
-    terraformVersion: $(terraformVersion)
+    terraformVersion: '$(terraformVersion)'
 
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: $(myDirectory)
+    workingDirectory: '$(myDirectory)'
     backendServiceArm: 'azure-portal-connection'
     backendAzureRmStorageAccountName: 'robinb17storage'
     backendAzureRmContainerName: 'mycontainer'
@@ -27,8 +27,8 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: $(myDirectory)
-    environmentServiceNameAzureRM: $(environmentServiceNameAzureRM)
+    workingDirectory: '$(myDirectory)'
+    environmentServiceNameAzureRM: '$(environmentServiceNameAzureRM)'
 
 # Manual validation step, placed in an agentless job
 # - job: ManualApprovalJob
@@ -43,6 +43,6 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    workingDirectory: $(myDirectory)
+    workingDirectory: '$(myDirectory)'
     commandOptions: '-auto-approve'
-    environmentServiceNameAzureRM: $(environmentServiceNameAzureRM)
+    environmentServiceNameAzureRM: '$(environmentServiceNameAzureRM)'
