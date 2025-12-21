@@ -2,17 +2,13 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "4.26.0"
+      version = "4.50.0"
     }
   }
 }
 
 provider "azurerm" {
   # Configuration options
-  features {
-    resource_group {
-      prevent_deletion_if_contains_resources = false
-    }
-  }
-  subscription_id = "0fb3b41d-23bc-47d2-861e-1582e1789bd5"
+  features {}
+  subscription_id = "98473d5b-c639-404e-9bf2-91559fe65ff8"
 }

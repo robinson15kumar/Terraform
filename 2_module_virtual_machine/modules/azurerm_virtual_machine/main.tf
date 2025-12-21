@@ -17,7 +17,9 @@ resource "azurerm_virtual_machine" "main" {
   location              = var.rg-location
   resource_group_name   = var.rg-name
   network_interface_ids = [azurerm_network_interface.main.id]
-  vm_size               = "Standard_B1s"
+  vm_size               = "Standard_D2s_v3"
+  delete_os_disk_on_termination = true
+  delete_data_disks_on_termination = true
 
   storage_image_reference {
     publisher = "Canonical"
