@@ -3,7 +3,7 @@ resource "azurerm_storage_account" "stg1" {
   for_each = var.stg_list
   # Simple Arguments
   name                     = each.value.name
-  resource_group_name      = "rg-robinson"
+  resource_group_name      = "bag-robinson"
   location                 = each.value.location
   account_tier             = each.value.account_tier
   account_replication_type = each.value.account_replication_type
@@ -17,6 +17,7 @@ resource "azurerm_storage_account" "stg1" {
         ip_rules       = ["20.40.50.60/30", "104.211.25.30/30"]
       }
     }
+    # for_each = var.mynetwork_rules
     content {
       default_action = network_rules.value.default_action
       bypass         = network_rules.value.bypass
